@@ -1,16 +1,19 @@
-# This is a sample Python script.
+import os
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+print(os.getcwd())
+path = os.path.join(os.getcwd(), 'recipes.txt')
+print(path)
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+with open(path, encoding='utf-8') as dishes:
+    result = {}
+    for dish in dishes:
+        dish_name = dish
+        print(dish)
+        counter = int(dishes.readline().strip())
+        for igredient in range(counter):
+            # igredient = dishes.readline().split(" | ")
+            temp_list = []
+            igredient_name, igredient_quantity, igredient_measure = dishes.readline().split(" | ")
+            print (igredient_name, igredient_quantity, gredient_measure)
+            temp_list.append({'ingredient_name' = igredient_name, 'quantity' =  gredient_quantity, 'measure' = gredient_measure})
+        dishes.readline().strip()
