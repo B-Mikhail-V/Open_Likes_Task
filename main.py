@@ -1,20 +1,21 @@
 import os
+from pprint import pprint
 
-print(os.getcwd())
+# print(os.getcwd())
 path = os.path.join(os.getcwd(), 'recipes.txt')
-print(path)
+# print(path)
 
 with open(path, encoding='utf-8') as dishes:
     result = {}
     for dish in dishes:
-        dish_name = dish
-        print(dish)
+        dish_name = dish.strip()
         counter = int(dishes.readline().strip())
-        for igredient in range(counter):
-            # igredient = dishes.readline().split(" | ")
-            temp_list = []
-            igredient_name, igredient_quantity, igredient_measure = dishes.readline().split(" | ")
-            # print (igredient_name, igredient_quantity, igredient_measure)
-            temp_list.append({'ingredient_name' : igredient_name, 'quantity' :  igredient_quantity, 'measure' : igredient_measure})
-            print(temp_list)
-        dishes.readline().strip()
+        temp_list = []
+        for ingredient in range(counter):
+            ingredient_name, ingredient_quantity, ingredient_measure = dishes.readline().split("|")
+            # print (ingredient_name, ingredient_quantity, ingredient_measure)
+            temp_list.append({'ingredient_name': ingredient_name.strip(), 'quantity':  ingredient_quantity.strip(),
+                              'measure': ingredient_measure.strip()})
+        result[dish_name] = temp_list
+        dishes.readline()
+    pprint(result)
