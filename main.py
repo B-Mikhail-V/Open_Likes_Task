@@ -18,4 +18,15 @@ with open(path, encoding='utf-8') as dishes:
                               'measure': ingredient_measure.strip()})
         result[dish_name] = temp_list
         dishes.readline()
-    pprint(result)
+    # pprint(result)
+dish_order = ['Омлет', 'Утка по-пекински']
+qty_order = 4
+for key, value in result.items():
+    if key in dish_order:
+        print(key)
+        for item in value:
+            # print(item)
+            # print(qty_order)
+            qty_ing = int(item['quantity']) * qty_order
+            print(item['ingredient_name'], qty_ing, item['measure'])
+
