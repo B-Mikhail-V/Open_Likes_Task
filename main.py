@@ -18,7 +18,7 @@ with open(path, encoding='utf-8') as dishes:
                               'measure': ingredient_measure.strip()})
         result[dish_name] = temp_list
         dishes.readline()
-    # pprint(result)
+    pprint(result)
 
 def get_shop_list_by_dishes(dishes, person_count):
     dishes_total = dishes * person_count
@@ -33,16 +33,16 @@ def get_shop_list_by_dishes(dishes, person_count):
                 # print(ingredient['ingredient_name'], ingredient_quantity_order, ingredient['measure'])
                 list_temp = [ingredient['ingredient_name'],]
                 ing_dict[ingredient['ingredient_name']] = [{'quantity':  ingredient['quantity'], 'measure':  ingredient['measure']}]
-                if ingredient in value:
-                    print(f"{ingredient} Есть такой {value}")
+                # if ingredient in value:
+                    # print(f"{ingredient} Есть такой {value}")
 
-                    print(f"{ingredient} Есть такой {value}")
+                    # print(f"{ingredient} Есть такой {value}")
 
-                else:
-                    print(f"{ingredient['ingredient_name'] } Нет такого {value}")
+                # else:
+                    #  print(f"{ingredient['ingredient_name'] } Нет такого {value}")
             # pprint(ing_dict)
                 ingredient_order_list[ingredient['ingredient_name']] = ingredient_order_list.get(ingredient['ingredient_name'], [{'quantity':  ingredient['quantity'], 'measure':  ingredient['measure']}])
-    pprint(ingredient_order_list)
+    # pprint(ingredient_order_list)
 
 
 print(get_shop_list_by_dishes(['Омлет', 'Утка по-пекински', 'Фахитос', 'Фахитос_2'], 2))
