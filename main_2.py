@@ -73,5 +73,20 @@
 #
 # pprint(dict_final)
 
-with
+import os
+from pprint import pprint
+files_list = ['1.txt', '2.txt', '3.txt']
+line_count_list = []
+dict_texts = {}
+for file in files_list:
+    path = os.path.join(os.getcwd(), file)
+    with open(path, encoding='utf-8') as text:
+        text_text = text.readlines()
+        line_count = len(text_text)
+        line_count_list.append(line_count)
+        dict_texts = {line_count: text_text}
+        # pprint(line_count)
+        # pprint(text_text)
+        pprint(dict_texts)
+
 
