@@ -45,31 +45,31 @@ cook_book = {'Запеченный картофель': [{'ingredient_name': 'К
                 'measure': 'шт',
                 'quantity': '3'}]}
 
-dish = ['Омлет', 'Фахитос', 'Фахитос_2']
-dict_final = {}
-dict_new = {}
-for key, value in cook_book.items():
-
-    if key in dish:
-        # dict_new = {}
-        for count in range(len(value)):
-            print(dict_new.keys())
-            print(value[count]['ingredient_name'])
-            print(value[count]['ingredient_name'] not in dict_new.keys())
-            if value[count]['ingredient_name'] not in dict_new.keys():
-                dict_new[value[count]['ingredient_name']] = {'quantity': value[count]['quantity'], 'measure': value[count]['measure']}
-            # print(value[count]['ingredient_name'])
-        # if dict_new[value[count]['ingredient_name']] not in dict_final.keys():
-                dict_final.update(dict_new)
-            else:
-                print("Сложить")
-
-        #     print(dict_final.update(dict_new))
-        # else:
-        #     print(dict_final)
-
-                pprint(dict_final)
+dish = ['Омлет', 'Омлет', 'Фахитос_2','Фахитос']
+dict_final = {} # Окончательный словарь продуктов
+dict_new = {} # Промежуточный словарь для наполнения в цикле
+for dish_order in dish:
+    for key, value in cook_book.items():
+        if key == dish_order:
+            print(key)
+            # dict_new = {}
+            for count in range(len(value)):
+                # print(dict_new.keys())
+                # print(value[count]['ingredient_name'])
+                # print(value[count]['ingredient_name'] not in dict_new.keys())
+                if value[count]['ingredient_name'] not in dict_new.keys():
+                    dict_new[value[count]['ingredient_name']] = {'quantity': value[count]['quantity'], 'measure': value[count]['measure']}
+                    dict_final.update(dict_new)
+                else:
+                    # print(f"Сложить {value[count]['quantity'], dict_new[value[count]['ingredient_name']]['quantity'] }")
+                    new_quality = int(value[count]['quantity']) + int(dict_new[value[count]['ingredient_name']]['quantity'])
+                    dict_new[value[count]['ingredient_name']] = {'quantity': new_quality, 'measure': value[count]['measure']}
+                    dict_final.update(dict_new)
 
 
+            #     print(dict_final.update(dict_new))
+            # else:
+            #     print(dict_final)
 
+pprint(dict_final)
 
