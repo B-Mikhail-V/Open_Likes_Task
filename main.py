@@ -25,6 +25,7 @@ def get_shop_list_by_dishes(dishes_order, person_count):
     Функция получает на вход спиок блюд "dishes_order"
     и возвращает список продуктов с количеством и единицами измерений.
     """
+
     dishes_total = dishes_order * person_count
     dict_final = {}  # Окончательный словарь продуктов
     dict_new = {}  # Промежуточный словарь для наполнения в цикле
@@ -46,10 +47,16 @@ def get_shop_list_by_dishes(dishes_order, person_count):
     return pprint(dict_final)
 
 def check_order(dishes_order):
+    """
+    Попытка сделать проверку списка блюд заказа,
+    но до конца не получилось: список корректируется,
+    если в списке несуществующее блюдо, а вот сообщение
+    выводится некорректно.
+    """
     for dish in dishes_order:
         if dish not in cook_book.keys():
+            print(f"В книге рецептов нет блюда {dish}")
             dishes_order.remove(dish)
-            print(dishes_order)
+    return dishes_order
 
-# get_shop_list_by_dishes(['Омлет', 'Утка по-пекински_2', 'Фахитос', 'Фахитос_2'], 5)
-check_order(['Омлет', 'Утка по-пекински_2', 'Фахитос', 'Фахитос_2'])
+get_shop_list_by_dishes(['Омлет', 'Утка по-пекински', 'Фахитос', 'Фахитос_2'], 3)
