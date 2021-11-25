@@ -21,15 +21,16 @@ with open(path, encoding='utf-8') as dishes:
 
 
 def get_shop_list_by_dishes(dishes_order, person_count):
-    '''
-    xdkjlvksdjlks
-    '''
+    """
+    Функция получает на вход спиок блюд "dishes_order"
+    и возвращает список продуктов с количеством и единицами измерений.
+    """
     dishes_total = dishes_order * person_count
     dict_final = {}  # Окончательный словарь продуктов
     dict_new = {}  # Промежуточный словарь для наполнения в цикле
     for dish_order in dishes_total:
         for key, value in cook_book.items():
-            if key == dish_order:
+            if dish_order == key:
                 for count in range(len(value)):
                     if value[count]['ingredient_name'] not in dict_new.keys():
                         dict_new[value[count]['ingredient_name']] = {'quantity': value[count]['quantity'],
@@ -41,7 +42,14 @@ def get_shop_list_by_dishes(dishes_order, person_count):
                         dict_new[value[count]['ingredient_name']] = \
                             {'quantity': new_quality, 'measure': value[count]['measure']}
                         dict_final.update(dict_new)
+
     return pprint(dict_final)
 
+def check_order(dishes_order):
+    for dish in dishes_order:
+        if dish not in cook_book.keys():
+            dishes_order.remove(dish)
+            print(dishes_order)
 
-get_shop_list_by_dishes(['Омлет', 'Утка по-пекински', 'Фахитос', 'Фахитос_2'], 5)
+# get_shop_list_by_dishes(['Омлет', 'Утка по-пекински_2', 'Фахитос', 'Фахитос_2'], 5)
+check_order(['Омлет', 'Утка по-пекински_2', 'Фахитос', 'Фахитос_2'])
