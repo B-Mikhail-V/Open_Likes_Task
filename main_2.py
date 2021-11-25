@@ -87,6 +87,7 @@ for file in files_list:
         dict_texts = {line_count: text_text}
         # pprint(line_count)
         # pprint(text_text)
-        pprint(dict_texts)
+pprint(dict_texts)
+pprint(sorted(line_count_list))
 
 
